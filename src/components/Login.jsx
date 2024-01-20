@@ -1,11 +1,24 @@
+/* eslint-disable no-unused-vars */
 import { useState } from "react";
 import Header from "./Header";
+import toast from "react-hot-toast";
+import { useForm } from "react-hook-form";
 
 const Login = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   const [isSignInForm, setIsSignInForm] = useState("signin");
 
+  // Handling the form submit
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+
+  // toggling the login and signup state
   const toggleTheAuthForm = (e) => {
-    console.log("hmm");
     e.preventDefault();
     setIsSignInForm(isSignInForm == "signin" ? "signup" : "signin");
   };
@@ -23,31 +36,98 @@ const Login = () => {
       </div>
       {/* Login Form */}
       <div className="absolute z-20 w-full h-[100%] flex justify-center items-end top-0">
-        <form className="absolute w-[28rem]  h-[80%] bg-[#000000b0] text-white p-[4rem] flex flex-col gap-[1.5rem] rounded-md">
+        <form
+          className="absolute w-[28rem]  h-[80%] bg-[#000000b0] text-white p-[4rem] flex flex-col gap-[1.5rem] rounded-lg"
+          onSubmit={handleSubmit(onSubmit)}
+        >
           <h1 className="text-3xl font-semibold">
             {isSignInForm === "signin" ? "Sign In" : "Sign Up"}
           </h1>
           <div>
+            {/* name */}
             {isSignInForm === "signup" && (
+              <div className="flex flex-col gap-1">
+                <input
+                  type="text"
+                  placeholder="Name"
+                  className="w-full py-3 px-3 my-2 rounded-sm bg-[#333333] text-[#8C8B78"
+                  {...register("name", {
+                    required: "Enter name",
+                  })}
+                />
+                {errors.name && (
+                  <div className="text-red-600 text-[0.8rem] -mt-[0.5rem]">
+                    {errors.name.message}
+                  </div>
+                )}
+              </div>
+            )}
+            {/* email */}
+            <div className="flex flex-col gap-1">
               <input
                 type="text"
-                placeholder="Name"
-                className="w-full py-3 px-3 my-2 rounded-sm bg-[#333333] text-[#8C8B78"
+                placeholder="Email Address"
+                className="w-full py-3 px-3 my-2 rounded-sm bg-[#333333] text-[#8C8B78] outline-none"
+                {...register("email", {
+                  required: "Enter email..",
+                  pattern: {
+                    value: /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/,
+                    message: "Enter a valid email",
+                  },
+                })}
               />
+              {errors.email && (
+                <div className="text-red-600 text-[0.8rem] -mt-[0.5rem]">
+                  {errors.email.message}
+                </div>
+              )}
+            </div>
+            {/* password */}
+            {isSignInForm === "signin" ? (
+              <div className="flex flex-col gap-1">
+                <input
+                  type="password"
+                  placeholder="Password"
+                  className="w-full py-3 my-2 px-3 rounded-sm bg-[#333333] text-[#8C8B78] outline-none"
+                  {...register("password", {
+                    required: "Enter Password",
+                  })}
+                />
+                {errors.password && (
+                  <div className="text-red-600 text-[0.8rem] -mt-[0.5rem]">
+                    {errors.password.message}
+                  </div>
+                )}
+              </div>
+            ) : (
+              <div className="flex flex-col gap-1">
+                <input
+                  type="password"
+                  placeholder="Password"
+                  className="w-full py-3 my-2 px-3 rounded-sm bg-[#333333] text-[#8C8B78"
+                  {...register("passwordsignup", {
+                    required: "Enter Password",
+                    pattern: {
+                      value:
+                        /^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9]).{6,})\S$/,
+                      message:
+                        "Password should have one small letter, capital and number and 7 characters",
+                    },
+                  })}
+                />
+                {errors.passwordsignup && (
+                  <div className="text-red-600 text-[0.8rem] -mt-[0.5rem]">
+                    {errors.passwordsignup.message}
+                  </div>
+                )}
+              </div>
             )}
-            <input
-              type="text"
-              placeholder="Email Address"
-              className="w-full py-3 px-3 my-2 rounded-sm bg-[#333333] text-[#8C8B78"
-            />
-            <input
-              type="password"
-              placeholder="Password"
-              className="w-full py-3 my-2 px-3 rounded-sm bg-[#333333] text-[#8C8B78"
-            />
           </div>
           <div className="my-5">
-            <button className="w-full flex justify-center items-center py-3 my-2 px-3 rounded-sm bg-[#E50914]">
+            <button
+              className="w-full flex justify-center items-center py-3 my-2 px-3 rounded-sm bg-[#E50914] hover:bg-[#c40711] transition-all duration-300"
+              type="submit"
+            >
               {isSignInForm === "signin" ? "Sign In" : "Sign Up"}
             </button>
             <div className="flex items-center justify-between">
