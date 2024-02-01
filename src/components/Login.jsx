@@ -1,8 +1,10 @@
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
 import Header from "./Header";
-import toast from "react-hot-toast";
+import { toast } from "react-hot-toast";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { useUserDetails } from "../utils/store";
 
 const Login = () => {
   const {
@@ -11,10 +13,16 @@ const Login = () => {
     formState: { errors },
   } = useForm();
   const [isSignInForm, setIsSignInForm] = useState("signin");
+  const navigate = useNavigate();
 
   // Handling the form submit
   const onSubmit = (data) => {
-    console.log(data);
+    // let id = toast.loading("Submitting");0
+    navigate("/browse");
+    // setTimeout(() => {
+    //   toast.dismiss(id);
+    //   toast.success("Login Successfull");
+    // }, 2000);
   };
 
   // toggling the login and signup state
@@ -23,19 +31,23 @@ const Login = () => {
     setIsSignInForm(isSignInForm == "signin" ? "signup" : "signin");
   };
   return (
-    <div className="w-full h-[150vh]">
-      <Header />
+    <div className="w-full h-[150vh] overflow-x-hidden">
+      <img
+        src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
+        alt=""
+        className="absolute z-20 w-[10rem] top-4 left-10 object-contain"
+      />
       {/* bg Image */}
-      <div className="w-full h-full">
+      <div className="w-full h-full overflow-x-hidden">
         <img
           src="https://assets.nflxext.com/ffe/siteui/vlv3/594f8025-139a-4a35-b58d-4ecf8fdc507c/d3c4e455-f0bf-4003-b7cd-511dda6da82a/IN-en-20240108-popsignuptwoweeks-perspective_alpha_website_small.jpg"
           alt=""
           className="object-cover w-full h-full"
         />
-        <div className="w-full h-[150vh] absolute top-0 z-10 bg-[#00000086]"></div>
+        <div className="w-full h-[150vh] absolute top-0 z-10 bg-black opacity-70"></div>
       </div>
       {/* Login Form */}
-      <div className="absolute z-20 w-full h-[100%] flex justify-center items-end top-0">
+      <div className="absolute z-20 w-full h-full overflow-x-hidden flex justify-center items-end top-0">
         <form
           className="absolute w-[28rem]  h-[80%] bg-[#000000b0] text-white p-[4rem] flex flex-col gap-[1.5rem] rounded-lg"
           onSubmit={handleSubmit(onSubmit)}
@@ -140,17 +152,17 @@ const Login = () => {
                   Remember me
                 </label>
               </div>
-              <p className="cursor-pointer text-[0.8rem] text-[#8c8c8c] font-medium">
+              <p className="cursor-pointer text-[0.8rem] text-right text-[#8c8c8c] font-medium">
                 Need help?
               </p>
             </div>
           </div>
-          <p className="text-[#575757] text-[1rem] font-medium">
+          <p className="text-[#575757] text-[1rem] font-medium flex justify-between">
             {isSignInForm === "signin" ? (
               <>
                 New to Netflix?{" "}
                 <button
-                  className="text-white hover:underline transition-all duration-300 font-medium"
+                  className="text-white hover:underline transition-all duration-300 font-medium w-[6rem]"
                   onClick={toggleTheAuthForm}
                 >
                   Sign up Now
@@ -160,7 +172,7 @@ const Login = () => {
               <>
                 Already a customer?{" "}
                 <button
-                  className="text-white hover:underline transition-all duration-300 font-medium"
+                  className="text-white hover:underline transition-all duration-300 font-medium w-[6rem]"
                   onClick={toggleTheAuthForm}
                 >
                   Sign In Now
