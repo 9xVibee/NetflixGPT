@@ -49,7 +49,7 @@ const Login = () => {
       {/* Login Form */}
       <div className="absolute z-20 w-full h-full overflow-x-hidden flex justify-center items-end top-0">
         <form
-          className="absolute w-[28rem]  h-[80%] bg-[#000000b0] text-white p-[4rem] flex flex-col gap-[1.5rem] rounded-lg"
+          className="absolute w-[28rem]  h-[80%] bg-[#000000b0] text-white px-[5rem] md:p-[4rem] flex flex-col gap-[1.5rem] rounded-lg pt-[2rem]"
           onSubmit={handleSubmit(onSubmit)}
         >
           <h1 className="text-3xl font-semibold">
