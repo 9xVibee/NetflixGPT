@@ -5,7 +5,10 @@ import useNowPlayingMovie from "../hooks/useNowPlayingMovies";
 
 const Browse = () => {
   // calling the hook which will fetch the now playing movies data
-  useNowPlayingMovie();
+  useNowPlayingMovie("now_playing");
+  useNowPlayingMovie("popular");
+  useNowPlayingMovie("top_rated");
+  useNowPlayingMovie("upcoming");
 
   return (
     <div>

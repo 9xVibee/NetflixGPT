@@ -23,7 +23,6 @@ https://api.themoviedb.org/3/movie/${movieId}/videos`,
       ? filteredTrailer
       : data.results[0];
 
-    console.log(isPresent);
     setTrailer(isPresent);
   };
 

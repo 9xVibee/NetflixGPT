@@ -3,13 +3,13 @@ import { FaRegCirclePlay } from "react-icons/fa6";
 
 const VideoTitle = ({ title, overview }) => {
   return (
-    <div className="pt-36 px-12">
-      <h1 className="text-6xl font-bold">{title}</h1>
-      <p className="text-lg py-6 w-1/2">{overview}</p>
+    <div className="pt-36 px-12 absolute text-white h-full bg-gradient-to-r from-black flex flex-col justify-center">
+      <h1 className="text-4xl font-bold">{title}</h1>
+      <p className="text-[1rem] mb-6 mt-2 w-[40%] line-clamp-2">{overview}</p>
       <div className="flex gap-2">
         <button
           className="py-2 bg-white
-        w-[10rem] border flex justify-center items-center
+        w-[10rem] border flex justify-center items-center text-black hover:bg-transparent hover:text-white transition-all duration-300
         "
         >
           <p className="">Play</p>

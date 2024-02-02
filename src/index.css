@@ -8,3 +8,11 @@
     box-sizing: border-box;
     width: 100%;
 }
+
+.flow-hide {
+    overflow-x: scroll;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}

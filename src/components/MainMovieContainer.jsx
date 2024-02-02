@@ -1,11 +1,9 @@
-import { useNowPlayingMovies } from "../utils/store";
+import { useMovies } from "../utils/store";
 import VideoBackground from "./VideoBackground";
 import VideoTitle from "./VideoTitle";
 
 const MainMovieContainer = () => {
-  const nowPlayingMovies = useNowPlayingMovies(
-    (state) => state?.nowPlayingMovies
-  );
+  const nowPlayingMovies = useMovies((state) => state?.nowPlayingMovies);
 
   // checking if movies are null (Early exist)
   if (!nowPlayingMovies) return;
@@ -17,7 +15,7 @@ const MainMovieContainer = () => {
   // extracting data
   const { title, overview, id } = mainMovie;
   return (
-    <div className="w-full h-[100vh]">
+    <div className="w-full h-[100vh] relative">
       <VideoTitle title={title} overview={overview} />
       <VideoBackground id={id} />
     </div>

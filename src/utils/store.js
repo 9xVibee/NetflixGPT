@@ -12,12 +12,36 @@ export const useUserDetails = create((set) => ({
   },
 }));
 
-export const useNowPlayingMovies = create((set) => ({
+export const useMovies = create((set) => ({
   nowPlayingMovies: null,
+  popular: null,
+  topRated: null,
+  upcoming: null,
   addNowPlayingMovies: (data) =>
     set(() => {
       return {
         nowPlayingMovies: data,
+      };
+    }),
+
+  addPopularMovies: (data) =>
+    set(() => {
+      return {
+        popular: data,
+      };
+    }),
+
+  addTopRated: (data) =>
+    set(() => {
+      return {
+        topRated: data,
+      };
+    }),
+
+  addUpcoming: (data) =>
+    set(() => {
+      return {
+        upcoming: data,
       };
     }),
 }));
