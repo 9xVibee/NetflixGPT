@@ -35,7 +35,7 @@ const Login = () => {
       <img
         src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
         alt=""
-        className="absolute z-20 w-[10rem] top-4 left-10 object-contain"
+        className="absolute z-20 w-[10rem] top-4 left-1 md:left-5 lg:left-10 object-contain"
       />
       {/* bg Image */}
       <div className="w-full h-full overflow-x-hidden">
