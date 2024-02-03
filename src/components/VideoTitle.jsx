@@ -4,8 +4,8 @@ import { FaRegCirclePlay } from "react-icons/fa6";
 const VideoTitle = ({ title, overview }) => {
   return (
     <div className="pt-[19rem] lg:pt-36 px-4 lg:px-12 absolute text-white h-full bg-gradient-to-r from-black flex flex-col justify-center">
-      <h1 className="text-3xl lg:text-4xl font-bold">{title}</h1>
-      <p className="text-[0.8rem] md:text-[0.9rem] lg:text-[1rem] mb-3 lg:mb-6 lg:mt-2 lg:w-[40%] w-[60%] line-clamp-2">
+      <h1 className="text-3xl lg:text-4xl font-bold line-clamp-1">{title}</h1>
+      <p className="text-[0.8rem] md:text-[0.9rem] lg:text-[1rem] mb-3 lg:mb-6 lg:mt-2 lg:w-[40%] w-[80%] line-clamp-2">
         {overview}
       </p>
       <div className="flex gap-2">

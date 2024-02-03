@@ -1,16 +1,37 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import Browse from "../pages/Browse";
 import Login from "./Login";
+import GptSearchPage from "../pages/GptSearchPage";
+import Header from "./Header";
+
+const MainLayout = () => {
+  return (
+    <>
+      <Header />
+      <Outlet />
+    </>
+  );
+};
 
 const Body = () => {
   const appRouter = createBrowserRouter([
     {
-      path: "/",
+      path: "/login",
       element: <Login />,
     },
     {
-      path: "/browse",
-      element: <Browse />,
+      path: "/",
+      element: <MainLayout />,
+      children: [
+        {
+          path: "/",
+          element: <Browse />,
+        },
+        {
+          path: "search",
+          element: <GptSearchPage />,
+        },
+      ],
     },
   ]);
   return (

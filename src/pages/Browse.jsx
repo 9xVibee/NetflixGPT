@@ -1,4 +1,3 @@
-import Header from "../components/Header";
 import MainMovieContainer from "../components/MainMovieContainer";
 import SubMoviesContainer from "../components/SubMoviesContainer";
 import useNowPlayingMovie from "../hooks/useNowPlayingMovies";
@@ -11,8 +10,7 @@ const Browse = () => {
   useNowPlayingMovie("upcoming");
 
   return (
-    <div>
-      <Header />
+    <div className="flow-hide">
       <MainMovieContainer />
       <SubMoviesContainer />
     </div>
