@@ -9,8 +9,8 @@ const MainMovieContainer = () => {
   if (!nowPlayingMovies) return;
 
   // getting random movie from 20 movies data :)
-  let randomNum = Math.floor(Math.random() * 21);
-  const mainMovie = nowPlayingMovies?.[randomNum];
+  // let randomNum = Math.floor(Math.random() * 21);
+  const mainMovie = nowPlayingMovies?.[12];
 
   // extracting data
   const { title, overview, id } = mainMovie;

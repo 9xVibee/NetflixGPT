@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import MainMovieContainer from "../components/MainMovieContainer";
 import SubMoviesContainer from "../components/SubMoviesContainer";
 import useNowPlayingMovie from "../hooks/useNowPlayingMovies";

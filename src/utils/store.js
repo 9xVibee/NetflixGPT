@@ -17,6 +17,8 @@ export const useMovies = create((set) => ({
   popular: null,
   topRated: null,
   upcoming: null,
+  tmdbGptMovies: [],
+  gptMovieNames: [],
   addNowPlayingMovies: (data) =>
     set(() => {
       return {
@@ -44,4 +46,16 @@ export const useMovies = create((set) => ({
         upcoming: data,
       };
     }),
+
+  addGptMovies: (data) => {
+    set(() => {
+      const { movieNames, tmdbMovies } = data;
+      return {
+        tmdbGptMovies: tmdbMovies,
+        gptMovieNames: movieNames,
+      };
+    });
+  },
 }));
+
+export const useGpt = create(() => ({}));
