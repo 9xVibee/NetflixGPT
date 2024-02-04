@@ -13,7 +13,7 @@ const MainMovieContainer = () => {
 
   // getting random movie from 20 movies data :)
   // let randomNum = Math.floor(Math.random() * 21);
-  const mainMovie = nowPlayingMovies?.[17];
+  const mainMovie = nowPlayingMovies?.[14];
 
   // extracting data
   const { title, overview, id } = mainMovie;
@@ -24,6 +24,7 @@ const MainMovieContainer = () => {
         <MainMovieSkeleton />;
       </div>
     );
+
   return (
     <div className="w-full h-[100vh] relative">
       <VideoTitle title={title} overview={overview} />

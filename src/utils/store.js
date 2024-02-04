@@ -17,8 +17,8 @@ export const useMovies = create((set) => ({
   popular: null,
   topRated: null,
   upcoming: null,
-  tmdbGptMovies: [],
-  gptMovieNames: [],
+  searchText: null,
+  searchMovies: null,
   searchPageMoviesLoading: false,
   mainContainerDataLoading: false,
   addNowPlayingMovies: (data) =>
@@ -49,12 +49,12 @@ export const useMovies = create((set) => ({
       };
     }),
 
-  addGptMovies: (data) => {
+  addSearchMovies: (data) => {
     set(() => {
-      const { movieNames, tmdbMovies } = data;
+      const { movies, title } = data;
       return {
-        tmdbGptMovies: tmdbMovies,
-        gptMovieNames: movieNames,
+        searchMovies: movies,
+        searchText: title != null ? `Search Result for : "${title}"` : null,
       };
     });
   },

@@ -1,31 +1,33 @@
 import { Search } from "lucide-react";
 import { useRef } from "react";
-import openai from "../utils/openai";
-import { options } from "../utils/constants";
+// import openai from "../utils/openai";
+// import { options } from "../utils/constants";
 import { useMovies } from "../utils/store";
+import { options } from "../utils/constants";
 
 const GptSearch = () => {
-  const addGptMovies = useMovies((state) => state.addGptMovies);
+  const addSearchMovies = useMovies((state) => state.addSearchMovies);
   const setSearchPageMovieLoading = useMovies(
     (state) => state.setSearchPageMovieLoading
   );
   const searchTextValue = useRef(null);
 
-  // Searching movie in tmdb
-  const searchMovieInTMDB = async (movieName) => {
-    const res = await fetch(
-      `https://api.themoviedb.org/3/search/movie?query=${movieName}&include_adult=false&language=en-US&page=1`,
-      options
-    );
+  //! Searching movie in tmdb
+  // const searchMovieInTMDB = async (movieName) => {
+  //   const res = await fetch(
+  //     `https://api.themoviedb.org/3/search/movie?query=${movieName}&include_adult=false&language=en-US&page=1`,
+  //     options
+  //   );
 
-    const data = await res.json();
-    return data;
-  };
+  //   const data = await res.json();
+  //   return data;
+  // };
+
   // handling the search
   const handleSearch = async () => {
     setSearchPageMovieLoading(true);
     try {
-      // making a proper query for movie recommendation
+      /* making a proper query for movie recommendation
       const gptQuery = `Act as a Movie Recommendation system and Suggest some movies for the query: ${searchTextValue.current.value}. only give me names of 5 movies, comma seperated like the example result given ahead. Example Result: Gadar, Sholay, Don, Krissh, Golmaal`;
 
       const gptResults = await openai.chat.completions.create({
@@ -42,6 +44,17 @@ const GptSearch = () => {
       addGptMovies({
         movieNames: gptMovies,
         tmdbMovies: tmdbMovieResults,
+      }); */
+      let searchVal = searchTextValue.current.value.toLowerCase();
+      const res = await fetch(
+        `https://api.themoviedb.org/3/search/multi?query=${searchVal}&include_adult=false&language=en-US&page=1`,
+        options
+      );
+
+      const data = await res.json();
+      addSearchMovies({
+        movies: data.results,
+        title: searchVal,
       });
       setSearchPageMovieLoading(false);
     } catch (error) {

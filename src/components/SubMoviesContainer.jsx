@@ -20,6 +20,7 @@ const SubMoviesContainer = () => {
         <MainContainerMovies />
       </div>
     );
+
   return (
     <div className="w-full bg-black -mt-16 z-10">
       <MovieList title={"Now Playing"} movies={movies} />
