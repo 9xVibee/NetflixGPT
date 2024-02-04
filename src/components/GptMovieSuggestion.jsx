@@ -12,14 +12,14 @@ const GptMovieSuggestion = () => {
 
   if (searchPageMoviesLoading)
     return (
-      <div className="h-full w-full pl-4">
+      <div className="h-full w-full pl-3">
         <RectangleSkeleton />
       </div>
     );
 
   return (
     <div className="text-white w-full h-full md:p-10 flex flex-col gap-4 bg-black md:-mt-12 -mt-5 sm:px-6">
-      <h1 className="text-2xl pl-8 line-clamp-1">{searchText}</h1>
+      <h1 className="text-2xl pl-6 line-clamp-1">{searchText}</h1>
       <div className="w-full h-fit flex flex-wrap gap-4 sm:gap-5 justify-center">
         {searchMovies?.length != 0 ? (
           searchMovies?.map((val, idx) => {
@@ -41,7 +41,7 @@ const GptMovieSuggestion = () => {
               );
           })
         ) : searchText != null ? (
-          <h1 className="text-5xl ml-3">No Movies, series found 🥺</h1>
+          <h1 className="text-5xl ml-6">No Movies, series found 🥺</h1>
         ) : (
           ""
         )}
