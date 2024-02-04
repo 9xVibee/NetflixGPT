@@ -12,21 +12,21 @@ const GptMovieSuggestion = () => {
 
   if (searchPageMoviesLoading)
     return (
-      <div className="h-full w-full md:p-10">
+      <div className="h-full w-full pl-4">
         <RectangleSkeleton />
       </div>
     );
 
   return (
     <div className="text-white w-full h-full md:p-10 flex flex-col gap-4 bg-black md:-mt-12 -mt-5 sm:px-6">
-      <h1 className="text-2xl pl-4">{searchText}</h1>
+      <h1 className="text-2xl pl-8 line-clamp-1">{searchText}</h1>
       <div className="w-full h-fit flex flex-wrap gap-4 sm:gap-5 justify-center">
         {searchMovies?.length != 0 ? (
           searchMovies?.map((val, idx) => {
             if (val?.poster_path)
               return (
                 <div
-                  className="w-[8rem] sm:w-[10rem] relative flex justify-center items-center"
+                  className="w-[9rem] sm:w-[10rem] relative flex justify-center items-center"
                   key={idx}
                 >
                   <img
