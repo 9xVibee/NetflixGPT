@@ -3,7 +3,7 @@ import GptSearch from "../components/GptSearch";
 
 const GptSearchPage = () => {
   return (
-    <div className="w-full h-[100vh] flex flex-col items-center bg-black">
+    <div className="w-[100vw] h-[200vh] flex flex-col items-center bg-black">
       <GptSearch />
       <GptMovieSuggestion />
     </div>

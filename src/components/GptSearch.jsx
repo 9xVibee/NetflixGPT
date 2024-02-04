@@ -50,7 +50,7 @@ const GptSearch = () => {
   };
 
   return (
-    <div className="p-6 m-6 w-full mt-14 lg:mt-10 relative top-0">
+    <div className="p-6 m-6 w-full mt-14 lg:mt-10 relative top-0 text-black">
       <div className="flex items-center justify-between bg-gray-100 rounded-sm md:w-[90%] lg:w-[50%] mx-auto py-1">
         <input
           type="text"
@@ -64,7 +64,7 @@ const GptSearch = () => {
         <button className="w-[3rem]" onClick={handleSearch}>
           <Search
             size={24}
-            className="transition-all duration-300 hover:text-red-600"
+            className="transition-all duration-300 hover:text-red-600 text-black"
           />
         </button>
       </div>

@@ -7,9 +7,13 @@ const useNowPlayingMovie = (movie_type) => {
   const addPopularMovies = useMovies((state) => state?.addPopularMovies);
   const addTopRated = useMovies((state) => state?.addTopRated);
   const addUpcoming = useMovies((state) => state?.addUpcoming);
+  const setMainContainerMoviesLoading = useMovies(
+    (state) => state?.setMainContainerMoviesLoading
+  );
 
   // Now Playing Movies
   const getNowPlayingMovies = async () => {
+    setMainContainerMoviesLoading(true);
     try {
       const res = await fetch(
         `https://api.themoviedb.org/3/movie/${movie_type}?language=en-US&page=1`,
@@ -31,9 +35,11 @@ const useNowPlayingMovie = (movie_type) => {
           addTopRated(data.results);
           break;
 
-        case "upcoming":
+        case "upcoming": {
           addUpcoming(data.results);
+          setMainContainerMoviesLoading(false);
           break;
+        }
       }
     } catch (err) {
       console.log("Error in Browse Page ", err);

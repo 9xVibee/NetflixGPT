@@ -13,4 +13,4 @@ export const options = {
 
 export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w500";
 
-export const OPENAI_KEY = "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";
+export const OPENAI_KEY = "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";

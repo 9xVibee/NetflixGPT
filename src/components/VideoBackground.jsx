@@ -1,9 +1,16 @@
 /* eslint-disable react/prop-types */
 import useMovieTrailer from "../hooks/useMovieTrailer";
+import { useMovies } from "../utils/store";
+import { MainMovieSkeleton } from "./SkeletonLoader";
 
 const VideoBackground = ({ id }) => {
+  const mainContainerDataLoading = useMovies(
+    (state) => state.mainContainerDataLoading
+  );
   // fetching movie data
   const trailer = useMovieTrailer(id);
+
+  if (mainContainerDataLoading) return <MainMovieSkeleton />;
   return (
     <div className="w-full h-full overflow-hidden bg-black">
       <iframe
