@@ -7,7 +7,7 @@ export const RectangleSkeleton = () => {
     <>
       <div className="flex flex-col gap-2 text-xl uppercase -mt-2 pl-4 md:pl-5 mb-4 pb-4 w-full">
         <Skeleton height="2.5rem" width="16rem" className="mb-2"></Skeleton>
-        <div className="flex gap-2 sm:gap-4 w-full h-fit flex-wrap">
+        <div className="flex gap-1 sm:gap-4 w-full h-fit flex-wrap">
           {Array(18)
             .fill("")
             .map((_, index) => (
