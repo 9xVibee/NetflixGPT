@@ -5,14 +5,14 @@ import "primereact/resources/themes/bootstrap4-dark-purple/theme.css";
 export const RectangleSkeleton = () => {
   return (
     <>
-      <div className="flex flex-col gap-2 text-xl uppercase -mt-2 pl-3 mb-4 pb-4 w-full">
+      <div className="flex flex-col gap-2 text-xl uppercase -mt-2 pl-4 md:pl-5 mb-4 pb-4 w-full">
         <Skeleton height="2.5rem" width="16rem" className="mb-2"></Skeleton>
-        <div className="flex gap-1 sm:gap-4 w-full h-fit flex-wrap">
+        <div className="flex gap-2 sm:gap-4 w-full h-fit flex-wrap">
           {Array(18)
             .fill("")
             .map((_, index) => (
               <Skeleton
-                width="10rem"
+                width="10.2rem"
                 height="16rem"
                 borderRadius="4px"
                 key={index}
@@ -60,6 +60,7 @@ export const MainMovieSkeleton = () => {
                 height="100vh"
                 borderRadius="4px"
                 key={index}
+                className="w-full h-full"
               ></Skeleton>
             ))}
         </div>

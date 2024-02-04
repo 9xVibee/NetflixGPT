@@ -18,12 +18,13 @@ const MainMovieContainer = () => {
   // extracting data
   const { title, overview, id } = mainMovie;
 
-  if (mainContainerDataLoading)
+  if (mainContainerDataLoading) {
     return (
       <div className="w-full h-[100vh] relative">
         <MainMovieSkeleton />;
       </div>
     );
+  }
 
   return (
     <div className="w-full h-[100vh] relative">
