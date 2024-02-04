@@ -3,21 +3,23 @@ import { ArrowUpLeftFromCircle } from "lucide-react";
 import { IMG_CDN_URL } from "../utils/constants";
 import { motion } from "framer-motion";
 
-const MovieCard = ({ url, idx }) => {
+const MovieCard = ({ url }) => {
+  if (!url) return;
+
   return (
     <motion.div
-      initial={{
-        opacity: 0,
-        y: 100,
-      }}
-      transition={{
-        duration: 1,
-        delay: idx / 10,
-      }}
-      animate={{
-        opacity: 1,
-        y: 0,
-      }}
+      // initial={{
+      //   opacity: 0,
+      //   y: 100,
+      // }}
+      // transition={{
+      //   duration: 1,
+      //   delay: idx / 10,
+      // }}
+      // animate={{
+      //   opacity: 1,
+      //   y: 0,
+      // }}
       className="flex flex-col rounded-md cursor-pointer"
     >
       <div className="flex w-[40vw] md:w-[16vw] lg:w-[12vw] relative">

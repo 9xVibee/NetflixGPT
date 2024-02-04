@@ -6,6 +6,9 @@ import { useMovies } from "../utils/store";
 
 const GptSearch = () => {
   const addGptMovies = useMovies((state) => state.addGptMovies);
+  const setSearchPageMovieLoading = useMovies(
+    (state) => state.setSearchPageMovieLoading
+  );
   const searchTextValue = useRef(null);
 
   // Searching movie in tmdb
@@ -20,6 +23,7 @@ const GptSearch = () => {
   };
   // handling the search
   const handleSearch = async () => {
+    setSearchPageMovieLoading(true);
     try {
       // making a proper query for movie recommendation
       const gptQuery = `Act as a Movie Recommendation system and Suggest some movies for the query: ${searchTextValue.current.value}. only give me names of 5 movies, comma seperated like the example result given ahead. Example Result: Gadar, Sholay, Don, Krissh, Golmaal`;
@@ -32,18 +36,21 @@ const GptSearch = () => {
       const gptMovies = gptResults.choices[0].message.content.split(",");
       const promiseArray = gptMovies.map((movie) => searchMovieInTMDB(movie));
 
-      const tmdbMovieResults = await Promise.all(promiseArray);
+      const tmdbMovieResults = (await Promise.all(promiseArray)).map(
+        (val) => val?.results
+      );
       addGptMovies({
         movieNames: gptMovies,
         tmdbMovies: tmdbMovieResults,
       });
+      setSearchPageMovieLoading(false);
     } catch (error) {
       console.log("Error in GptSearch comp: " + error);
     }
   };
 
   return (
-    <div className="p-6 m-6 w-full mt-14 lg:mt-10 relative">
+    <div className="p-6 m-6 w-full mt-14 lg:mt-10 relative top-0">
       <div className="flex items-center justify-between bg-gray-100 rounded-sm md:w-[90%] lg:w-[50%] mx-auto py-1">
         <input
           type="text"

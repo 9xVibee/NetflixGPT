@@ -8,7 +8,7 @@ const SubMoviesContainer = () => {
   const upcoming = useMovies((state) => state.upcoming);
   return (
     <div className="w-full bg-black -mt-16 z-10">
-      <MovieList movies={movies} />
+      <MovieList title={"Now Playing"} movies={movies} />
       <MovieList title={"Popular"} movies={popular} />
       <MovieList title={"Top Rated"} movies={topRated} />
       <MovieList title={"Upcoming"} movies={upcoming} />

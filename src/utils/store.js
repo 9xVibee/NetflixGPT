@@ -19,6 +19,7 @@ export const useMovies = create((set) => ({
   upcoming: null,
   tmdbGptMovies: [],
   gptMovieNames: [],
+  searchPageMoviesLoading: false,
   addNowPlayingMovies: (data) =>
     set(() => {
       return {
@@ -53,6 +54,14 @@ export const useMovies = create((set) => ({
       return {
         tmdbGptMovies: tmdbMovies,
         gptMovieNames: movieNames,
+      };
+    });
+  },
+
+  setSearchPageMovieLoading: (val) => {
+    set(() => {
+      return {
+        searchPageMoviesLoading: val,
       };
     });
   },
